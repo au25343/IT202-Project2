@@ -1,0 +1,261 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moving On Up - Project 2</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 25px;
+            background: rgba(255,255,255,0.92);
+            border-radius: 12px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #684b9a;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input:not([type="checkbox"]),
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .checkbox-row label {
+            margin: 0;
+            font-weight: normal;
+        }
+
+        button {
+            padding: 12px 30px;
+            margin-top: 20px;
+            background: #684b9a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #52377e;
+        }
+
+        .password-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .password-row input {
+            flex: 1;
+        }
+
+        .password-row button {
+            margin-top: 5px;
+            padding: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="form-container">
+
+    <h1>Moving On Up</h1>
+
+    <form id="movingForm"
+          action="process_login.php"
+          method="POST">
+
+        <label for="firstName">
+            Moving Employee's First Name:
+        </label>
+
+        <input
+            type="text"
+            id="firstName"
+            name="firstName"
+            required
+        >
+
+        <label for="lastName">
+            Moving Employee's Last Name:
+        </label>
+
+        <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            required
+        >
+
+        <label for="password">
+            Moving Employee's Password:
+        </label>
+
+        <div class="password-row">
+            <input
+                type="password"
+                id="password"
+                name="password"
+                required
+            >
+
+            <button
+                type="button"
+                id="togglePassword">
+                Show
+            </button>
+        </div>
+
+        <label for="employeeID">
+            Moving Employee's ID #:
+        </label>
+
+        <input
+            type="text"
+            id="employeeID"
+            name="employeeID"
+            inputmode="numeric"
+            pattern="[0-9]{4}"
+            required
+        >
+
+        <label for="phoneNumber">
+            Moving Employee's Phone #:
+        </label>
+
+        <input
+            type="text"
+            id="phoneNumber"
+            name="phoneNumber"
+            required
+        >
+
+        <label for="email">
+            Moving Employee's Email:
+        </label>
+
+        <input
+            type="email"
+            id="email"
+            name="email"
+            required
+        >
+
+        <div class="checkbox-row">
+            <input
+                type="checkbox"
+                id="emailConfirm"
+                name="emailConfirm"
+                value="yes"
+            >
+
+            <label for="emailConfirm">
+                Request Email Confirmation
+            </label>
+        </div>
+
+        <label for="transaction">
+            Select a Transaction:
+        </label>
+
+        <select
+            id="transaction"
+            name="transaction"
+            required>
+
+            <option value="">
+                -- Select --
+            </option>
+
+            <option value="search">
+                Search A Moving Employee's Accounts
+            </option>
+
+            <option value="book">
+                Book a Customer's Moving Event
+            </option>
+
+            <option value="cancel">
+                Cancel A Customer's Moving Event
+            </option>
+
+            <option value="request">
+                Request Moving Services
+            </option>
+
+            <option value="additional">
+                Request Additional Moving Services
+            </option>
+
+            <option value="create">
+                Create A New Customer Account
+            </option>
+
+        </select>
+
+        <div>
+            <button type="submit">
+                Submit
+            </button>
+
+            <button type="reset">
+                Reset
+            </button>
+        </div>
+
+    </form>
+
+</div>
+
+<script>
+document.getElementById("togglePassword")
+    .addEventListener("click", function () {
+
+        const password =
+            document.getElementById("password");
+
+        if (password.type === "password") {
+            password.type = "text";
+            this.textContent = "Hide";
+        } else {
+            password.type = "password";
+            this.textContent = "Show";
+        }
+    });
+</script>
+
+</body>
+</html>
